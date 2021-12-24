@@ -1,0 +1,11 @@
+<h2>Edit Reminder</h2>
+<% html_title "Edit Reminder" %>
+
+<div class="reminder-wrap">
+    <%= render "form", reminder: @reminder %>
+</div>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'reminder', :plugin => 'reminder' %>
+    <%= javascript_include_tag 'reminder', :plugin => 'reminder' %>
+<% end %>

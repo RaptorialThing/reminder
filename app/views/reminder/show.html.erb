@@ -1,0 +1,16 @@
+<h2>Reminder</h2>
+<% html_title "Reminder" %>
+
+<div class="reminder-wrap">
+    <%= form_with url: "/reminder/update", method: :post do |form| %>
+    <%= form.check_box :no_in_progress_task %>
+    <%= form.label :no_in_progress_task %>    
+"показывать пользователям без единой задачи "в процессе"  напоминание?" %>
+    <% form.submit "Отправить" %>
+    <% end %>
+</div>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'reminder', :plugin => 'reminder' %>
+    <%= javascript_include_tag 'reminder', :plugin => 'reminder' %>
+<% end %>

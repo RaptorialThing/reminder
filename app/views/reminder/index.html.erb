@@ -1,0 +1,17 @@
+<h2>Reminder</h2>
+<% html_title "Reminder" %>
+
+<div class="reminder-wrap">
+    <ul>
+    <% @reminders.each do |reminder| %>
+    <li>
+<%= link_to "Настройки", {:action => 'edit', :id => reminder[:id] }, :method => :get %>
+    </li>
+    <% end %>
+    </ul> 
+</div>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'reminder', :plugin => 'reminder' %>
+    <%= javascript_include_tag 'reminder', :plugin => 'reminder' %>
+<% end %>

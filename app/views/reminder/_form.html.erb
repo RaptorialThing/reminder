@@ -1,0 +1,7 @@
+<%= form_with url: "/reminder/#{reminder.id}/update", method: :post do |form| %>
+    <%= form.check_box :no_in_progress_task %>
+    <%= form.label :no_in_progress_task,    
+"показывать вам напоминание, если у вас нет ни одной задачи 'в процессе'?" %> <br/>
+    <%= form.submit "Отправить" %>
+ <% end %>
+
