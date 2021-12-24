@@ -20,7 +20,8 @@ class ReminderController < ApplicationController
   def update
     @reminder = Reminder.find(params[:id])
     
-    if @reminder.update(no_in_progress_task: params[:no_in_progress_task],user_id: User.current.id)
+    no_in_progress_task = params[:no_in_progress_task].to_i == 1 ? true : false
+    if @reminder.update(no_in_progress_task: no_in_progress_task,user_id: User.current.id)
         flash[:notice] = "Ок. Настройки сохранены"
     else
         flash[:alert] = "Ошибка. Настройки не сохранены"
@@ -40,19 +41,7 @@ class ReminderController < ApplicationController
         flash[:alert] = "Ошибка. Напоминание не создано"
     end
   end
-
-
-  def check_no_task_in_progress
-    issues = Issue.find_by(author_id: User.current.id, status_id: 2)
-    if issues.nil?
-    status = true
-    else
-    status = false
-    end
-    
-    return status  
-  end
-
+  
 
   private
   def reminder_filter
